@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1504.84">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #454545}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #454545; min-height: 14.0px}
+    span.s1 {font: 12.0px '.Apple Color Emoji UI'}
+    span.s2 {font: 12.0px 'Zapf Dingbats'}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="it"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Visa Tracker&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body { font-family: Arial, sans-serif; margin: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1 { color: #2c3e50; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.alert { font-weight: bold; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.ok { color: green; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.warn { color: red; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;Visa Tracker&lt;/h1&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;Inizio viaggio: &lt;input type="date" id="start"&gt;&lt;/label&gt;&lt;br&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;Fine viaggio: &lt;input type="date" id="end"&gt;&lt;/label&gt;&lt;br&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;Paese:<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;select id="country"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option&gt;Italia&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option&gt;Spagna&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option&gt;Francia&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option&gt;Germania&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option&gt;Turchia&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option&gt;Kosovo&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option&gt;Cipro Nord&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/label&gt;&lt;br&gt;&lt;br&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="addTrip('Claudio')"&gt;Aggiungi viaggio Claudio&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="addTrip('Murat')"&gt;Aggiungi viaggio Murat&lt;/button&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Risultati&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p id="claudioResult"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p id="muratResult"&gt;&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const schengenCountries = [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Italia","Spagna","Francia","Germania","Portogallo","Grecia","Belgio",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Paesi Bassi","Lussemburgo","Austria","Polonia","Ungheria","Repubblica Ceca",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Slovacchia","Slovenia","Croazia","Estonia","Lettonia","Lituania","Svezia",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Finlandia","Danimarca","Norvegia","Islanda","Malta","Svizzera","Liechtenstein"</p>
+<p class="p1"><span class="Apple-converted-space">    </span>];</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let tripsClaudio = [];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let tripsMurat = [];</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function addTrip(person) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const start = new Date(document.getElementById('start').value);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const end = new Date(document.getElementById('end').value);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const country = document.getElementById('country').value;</p>
+<p class="p2"><span class="Apple-converted-space">      </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const trip = {start, end, country};</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (person === 'Claudio') tripsClaudio.push(trip);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>else tripsMurat.push(trip);</p>
+<p class="p2"><span class="Apple-converted-space">      </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>updateResults();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function daysUsed(trips, area) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const today = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const limit = new Date(today.getTime() - 180*24*60*60*1000);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let total = 0;</p>
+<p class="p2"><span class="Apple-converted-space">      </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (const t of trips) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const areaTrip = schengenCountries.includes(t.country) ? "Schengen" : t.country;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (areaTrip === area &amp;&amp; t.end &gt;= limit) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const start = t.start &lt; limit ? limit : t.start;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const end = t.end &gt; today ? today : t.end;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const diff = Math.floor((end - start)/(1000*60*60*24)) + 1;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>total += diff &gt; 0 ? diff : 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return total;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateResults() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const claudioUsed = daysUsed(tripsClaudio, "Turchia");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const claudioLeft = 89 - claudioUsed;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('claudioResult').innerHTML =</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`Claudio: ${claudioUsed} giorni usati / ${claudioLeft} disponibili in Turchia` +</p>
+<p class="p1"><span class="Apple-converted-space">        </span>(claudioUsed &gt; 89 ? " &lt;span class='alert warn'&gt;<span class="s1">⚠️</span> Limite superato!&lt;/span&gt;" : " &lt;span class='alert ok'&gt;<span class="s2">✔</span> Conforme&lt;/span&gt;");</p>
+<p class="p2"><span class="Apple-converted-space">      </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const muratUsed = daysUsed(tripsMurat, "Schengen");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const muratLeft = 89 - muratUsed;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('muratResult').innerHTML =</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`Murat: ${muratUsed} giorni usati / ${muratLeft} disponibili in Schengen` +</p>
+<p class="p1"><span class="Apple-converted-space">        </span>(muratUsed &gt; 89 ? " &lt;span class='alert warn'&gt;<span class="s1">⚠️</span> Limite superato!&lt;/span&gt;" : " &lt;span class='alert ok'&gt;<span class="s2">✔</span> Conforme&lt;/span&gt;");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
